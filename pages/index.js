@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import Api from '../lib/proxy-api'
-import Movies from '../components/movies';
+import Movies from '../components/movies'
 
 export default function Home({initialMovies}) {
   const [movies, setMovies] = useState(initialMovies)

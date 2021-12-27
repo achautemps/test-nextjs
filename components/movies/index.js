@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Movie from './single-movie';
 
 export default function Movies({ movies, onClickLoadMore }) {
   const [filter, setFilter] = useState('');
@@ -13,7 +14,7 @@ export default function Movies({ movies, onClickLoadMore }) {
             .filter((movie) => movie.title.toLowerCase().includes(filter))
             .map((movie) => (
               <li key={movie.id}>
-                {movie.title}
+                <Movie movie={movie} />
               </li>
             ))}
         </ul>

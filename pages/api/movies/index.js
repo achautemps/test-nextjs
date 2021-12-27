@@ -5,6 +5,6 @@ export default async function handler(req, res) {
     const movies = await TheMovieDatabaseApi.getAll(req.query.page);
     res.json(movies);
   } catch (err) {
-    res.json(handleError(err));
+    res.json(err);
   }
 }
