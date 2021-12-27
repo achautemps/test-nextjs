@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "heroku-postbuild": "npm run build",
-    "init" : "cp .env.example .env.local"
+    "init": "cp .env.example .env.local",
+    "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.24.0",
@@ -18,6 +19,8 @@
   },
   "devDependencies": {
     "@styled-jsx/plugin-sass": "^4.0.2",
+    "eslint": "^8.5.0",
+    "eslint-config-next": "12.0.7",
     "eslint-config-prettier": "^8.3.0"
   }
 }

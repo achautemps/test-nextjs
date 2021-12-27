@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { memo } from 'react';
 
-function Movie({ movie }){
+function Movie({ movie }) {
   return (
     <>
       <div className='c-movie'>
@@ -42,7 +42,7 @@ function Movie({ movie }){
         }
       `}</style>
     </>
-  )
+  );
 }
 
 export default memo(Movie);

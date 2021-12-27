@@ -5,11 +5,10 @@
 }
 
 @for $i from 1 through $max-columns{
-.o-col-#{$i}{
-    flex : 0 0 calculate-width($i);
-    max-width: calculate-width($i);
-}
-
+    .o-col-#{$i}{
+        flex : 0 0 calculate-width($i);
+        max-width: calculate-width($i);
+    }
 }
 
 @include small-up(){

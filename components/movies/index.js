@@ -7,7 +7,7 @@ export default function Movies({ movies, onClickLoadMore }) {
   function onFilter(e) {
     setFilter(e.target.value.toLowerCase());
   }
-  console.log(movies)
+  console.log(movies);
   return (
     <>
       <section className='c-movies'>
