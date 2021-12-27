@@ -1,0 +1,9 @@
+.message{
+  font-weight: bold;
+  &.-error{
+    color: $error;
+  }
+  &.-valid{
+    color: $valid;
+  }
+}

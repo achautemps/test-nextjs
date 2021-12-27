@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 import Api from '../lib/proxy-api';
+import Message from './message';
 
 export default function Rating({ movie }) {
   const marks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [rating, setRating] = useState(1);
+  const [result, setResult] = useState(null);
 
   async function handleSubmit() {
     const res = await Api.movieRating(movie.id, rating);
-    alert(JSON.stringify(res));
+    setResult({ ...res, rating });
   }
   function handleClickMark(mark) {
     setRating(mark);
+    setResult(null);
   }
   return (
     <>
@@ -38,6 +41,7 @@ export default function Rating({ movie }) {
         <button className='button' onClick={handleSubmit}>
           Voter
         </button>
+        <Message result={result} />
       </div>
       <style jsx>{`
         @import '../styles/shared';

@@ -1,4 +1,4 @@
-import TheMovieDatabaseApi from '../../../lib/the-movie-database';
+import TheMovieDatabaseApi from '../../../lib/the-movie-database-api';
 
 export default async function handler(req, res) {
   try {

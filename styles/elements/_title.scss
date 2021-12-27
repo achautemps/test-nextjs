@@ -1,0 +1,9 @@
+.title{
+  font-family: $title-font-family;
+  font-size: rem(16);
+  &.-tiny{
+    font-size: rem(12);
+    font-family: $text-font-family;
+    font-weight: bold;
+  }
+}
