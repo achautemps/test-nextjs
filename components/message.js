@@ -13,7 +13,7 @@ function Message({ result }) {
   } else {
     return (
       <p className='message -error'>
-        Désolé, votre ne note n'a pas été prise en compte
+        {` Désolé, votre ne note n'a pas été prise en compte`}
       </p>
     );
   }
