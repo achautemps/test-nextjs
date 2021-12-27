@@ -1,11 +1,18 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRef } from 'react';
 import Api from '../../lib/proxy-api';
 import Genres from '../../components/genres';
 import Actors from '../../components/actors';
+import Modal from '../../components/modal';
+import Rating from '../../components/rating';
 
 export default function Movie({ movie, actors }) {
+  const modal = useRef();
+  function handleClickRatingButton() {
+    modal.current.toggleModal();
+  }
   return (
     <>
       <Head>
@@ -34,7 +41,10 @@ export default function Movie({ movie, actors }) {
                 <h1>{movie.original_title}</h1>
                 <p>{movie.overview}</p>
                 <p>{movie.vote_average} / 10</p>
-                <button className='button -tiny l-movie__rating'>
+                <button
+                  onClick={handleClickRatingButton}
+                  className='button -tiny l-movie__rating'
+                >
                   Donner une note au film
                 </button>
               </div>
@@ -42,6 +52,9 @@ export default function Movie({ movie, actors }) {
             </div>
           </div>
         </div>
+        <Modal ref={modal} ariaHidden='true' size='tiny'>
+          <Rating />
+        </Modal>
       </section>
       <style jsx>{`
         @import '../../styles/shared';
