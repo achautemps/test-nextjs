@@ -1,0 +1,13 @@
+.button{
+  padding: rem(8);
+  color: var(--bg-color);
+  background : var(--primary-color);
+  display: inline-block;
+  border-radius : rem(8);
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  &.-tiny{
+    font-size: rem(10)
+  }
+}
