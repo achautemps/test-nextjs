@@ -1,9 +1,21 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import Api from '../lib/the-movie-database'
+import Api from '../lib/proxy-api'
+import Movies from '../components/movies';
 
 export default function Home({initialMovies}) {
   const [movies, setMovies] = useState(initialMovies)
+  function onClickLoadMore() {
+    Api.getAll(movies.page + 1)
+      .then(({ results, page }) => {
+        setMovies((state) => ({
+          ...state,
+          page: page,
+          results: [...state.results, ...results],
+        }));
+      })
+      .catch((error) => console.error(error));
+  }
   return (
     <div className="container">
       <Head>
@@ -11,11 +23,7 @@ export default function Home({initialMovies}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {movies.results.map(movie => (
-          <div className="movie">
-            {movie.title}
-          </div>
-        ))}
+        <Movies movies={movies} onClickLoadMore={onClickLoadMore} />
       </main>
     </div>
   )
