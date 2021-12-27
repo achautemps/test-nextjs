@@ -10,8 +10,12 @@ import Rating from '../../components/rating';
 
 export default function Movie({ movie, actors }) {
   const modal = useRef();
+  const rating = useRef();
   function handleClickRatingButton() {
     modal.current.toggleModal();
+  }
+  function handleCloseModal() {
+    rating.current.reset();
   }
   return (
     <>
@@ -52,8 +56,13 @@ export default function Movie({ movie, actors }) {
             </div>
           </div>
         </div>
-        <Modal ref={modal} ariaHidden='true' size='tiny'>
-          <Rating movie={movie} />
+        <Modal
+          ref={modal}
+          ariaHidden='true'
+          size='tiny'
+          onClose={handleCloseModal}
+        >
+          <Rating ref={rating} movie={movie} />
         </Modal>
       </section>
       <style jsx>{`

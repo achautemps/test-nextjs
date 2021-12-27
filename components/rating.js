@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, forwardRef, useImperativeHandle } from 'react';
 import clsx from 'clsx';
 import Api from '../lib/proxy-api';
 import Message from './message';
 
-export default function Rating({ movie }) {
+function Rating({ movie }, ref) {
   const marks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [rating, setRating] = useState(1);
   const [result, setResult] = useState(null);
@@ -12,10 +12,16 @@ export default function Rating({ movie }) {
     const res = await Api.movieRating(movie.id, rating);
     setResult({ ...res, rating });
   }
-  function handleClickMark(mark) {
-    setRating(mark);
+  function reset() {
     setResult(null);
   }
+  function handleClickMark(mark) {
+    setRating(mark);
+    reset();
+  }
+  useImperativeHandle(ref, () => {
+    return { reset };
+  });
   return (
     <>
       <div className='c-rating'>
@@ -73,3 +79,5 @@ export default function Rating({ movie }) {
     </>
   );
 }
+
+export default forwardRef(Rating);
