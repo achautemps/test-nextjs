@@ -2,15 +2,16 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import Api from '../lib/proxy-api';
 
-export default function Rating() {
+export default function Rating({ movie }) {
   const marks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const [notation, setNotation] = useState(1);
+  const [rating, setRating] = useState(1);
 
-  function handleSubmit() {
-    console.log(Api);
+  async function handleSubmit() {
+    const res = await Api.movieRating(movie.id, rating);
+    alert(JSON.stringify(res));
   }
   function handleClickMark(mark) {
-    setNotation(mark);
+    setRating(mark);
   }
   return (
     <>
@@ -20,7 +21,7 @@ export default function Rating() {
           {marks.map((mark) => (
             <li
               className={clsx('c-rating__item', {
-                ' -active': mark <= notation,
+                ' -active': mark <= rating,
               })}
               key={mark}
               onClick={() => handleClickMark(mark)}

@@ -53,7 +53,7 @@ export default function Movie({ movie, actors }) {
           </div>
         </div>
         <Modal ref={modal} ariaHidden='true' size='tiny'>
-          <Rating />
+          <Rating movie={movie} />
         </Modal>
       </section>
       <style jsx>{`
