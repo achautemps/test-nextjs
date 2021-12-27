@@ -1,5 +1,5 @@
 import { withIronSessionApiRoute } from 'iron-session/next';
-import theMovieDatabase from '../../../../../lib/the-movie-database';
+import theMovieDatabase from '../../../../../lib/the-movie-database-api';
 
 const sessionOptions = {
   cookieName: 'session',
