@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import Api from '../lib/proxy-api';
 import Movies from '../components/movies';
+import Layout from '../components/layout';
 
 export default function Home({ initialMovies }) {
   const [movies, setMovies] = useState(initialMovies);
@@ -22,9 +23,9 @@ export default function Home({ initialMovies }) {
         <title>Test Next.js Alex Chautemps</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>
+      <Layout>
         <Movies movies={movies} onClickLoadMore={onClickLoadMore} />
-      </main>
+      </Layout>
     </div>
   );
 }

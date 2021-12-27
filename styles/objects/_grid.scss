@@ -1,7 +1,6 @@
-.container{
-  max-width: 1200px;
+.o-container{
+  max-width: $max-width;
   margin : 0 auto;
-
 }
 
 @for $i from 1 through $max-columns{
