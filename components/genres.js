@@ -10,7 +10,7 @@ export default function Genres({ genres }) {
           ))}
         </ul>
         <style jsx>{`
-          @import '../../styles/shared';
+          @import '../styles/shared';
           .c-genres {
             &__item {
               padding: 0.25rem;

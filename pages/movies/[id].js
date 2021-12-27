@@ -2,9 +2,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import Api from '../../lib/proxy-api';
-import Genres from '../../components/movies/genres';
+import Genres from '../../components/genres';
+import Actors from '../../components/actors';
 
-export default function Movie({ movie }) {
+export default function Movie({ movie, actors }) {
   return (
     <>
       <Head>
@@ -37,6 +38,7 @@ export default function Movie({ movie }) {
                   Donner une note au film
                 </button>
               </div>
+              <Actors actors={actors.cast} />
             </div>
           </div>
         </div>
@@ -103,11 +105,12 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const movie = await Api.getMovieDetails(context.params.id);
+  const { movie, actors } = await Api.getMovieDetails(context.params.id);
 
   return {
     props: {
       movie,
+      actors,
     },
   };
 }
