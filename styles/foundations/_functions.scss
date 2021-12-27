@@ -1,0 +1,10 @@
+@use "sass:math";
+
+@function rem($value) {
+  @return math.div($value, 16) + rem;
+}
+
+
+@function calculate-width($i){
+  @return math.div($i, 12) * 100%;
+}

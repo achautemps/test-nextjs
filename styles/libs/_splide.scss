@@ -1,0 +1,29 @@
+.splide {
+  padding: 0 rem(16);
+  position: relative;
+  &__arrow{
+    border : none;
+    background : none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: rem(16);
+    height: rem(16);
+    padding:  rem(2);
+    z-index: 10;
+    cursor: pointer;
+    svg{
+      width: rem(12);
+      height: rem(12);
+      display: block;
+    }
+    
+    &--prev{
+      left: 0;
+      transform: translateY(-50%) rotate(180deg);
+    }
+    &--next{
+      right: 0;
+    }
+  }
+}

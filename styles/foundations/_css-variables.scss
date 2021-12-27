@@ -1,0 +1,13 @@
+:root {
+  --primary-color: #{$primary-color};
+  --bg-color: #{$bg-color};
+  --content-color: #{$content-color};
+  --gutter : #{rem(4)};
+}
+
+@include medium-up{
+  :root {
+    --gutter : #{rem(8)};
+  }
+  
+}
