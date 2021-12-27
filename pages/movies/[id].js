@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import Api from '../../lib/proxy-api';
+import Genres from '../../components/movies/genres';
 
 export default function Movie({ movie }) {
   return (
@@ -28,6 +29,7 @@ export default function Movie({ movie }) {
           <div className='o-col-12 -s-7 -md-8'>
             <div className='p-movie__content'>
               <div className='p-movie__head'>
+                <Genres genres={movie.genres} />
                 <h1>{movie.original_title}</h1>
                 <p>{movie.overview}</p>
                 <p>{movie.vote_average} / 10</p>
