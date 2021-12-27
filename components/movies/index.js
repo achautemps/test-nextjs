@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Movie from './single-movie';
+import Movie from './movie-item';
+import Search from '../search';
 
 export default function Movies({ movies, onClickLoadMore }) {
   const [filter, setFilter] = useState('');
@@ -10,6 +11,7 @@ export default function Movies({ movies, onClickLoadMore }) {
   return (
     <>
       <section className='c-movies'>
+        <Search handleChange={onFilter} />
         <ul className='o-flex -center -wrap -gutter'>
           {movies.results
             .filter((movie) => movie.title.toLowerCase().includes(filter))
