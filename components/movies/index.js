@@ -6,20 +6,21 @@ export default function Movies({ movies, onClickLoadMore }) {
   function onFilter(e) {
     setFilter(e.target.value.toLowerCase());
   }
+  console.log(movies)
   return (
     <>
       <section className='c-movies'>
-        <ul>
+        <ul className='o-flex -center -wrap -gutter'>
           {movies.results
             .filter((movie) => movie.title.toLowerCase().includes(filter))
             .map((movie) => (
-              <li key={movie.id}>
+              <li className='o-col-4 -md-3 -l-2' key={movie.id}>
                 <Movie movie={movie} />
               </li>
             ))}
         </ul>
         {movies.page < movies.total_pages ? (
-          <div className='movies__more'>
+          <div className='c-movies__more'>
             <span className='button' onClick={onClickLoadMore}>
               {' '}
               Voir Plus
@@ -28,7 +29,7 @@ export default function Movies({ movies, onClickLoadMore }) {
         ) : null}
       </section>
       <style jsx>{`
-        .movies {
+        .c-movies {
           &__more {
             text-align: center;
           }

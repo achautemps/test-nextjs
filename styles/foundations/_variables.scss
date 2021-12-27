@@ -1,0 +1,22 @@
+// colors
+$bg-color : #fff;
+$content-color : #333;
+$primary-color : #0070f3;
+$lighter-grey: #f5f5f5;
+$light-grey : #aeaeae;
+$grey : #888;
+$dark-grey : #333;
+
+//fonts
+$text-font-family: 'Roboto', sans-serif;
+$title-font-family: 'Roboto Condensed', sans-serif;
+
+//grid
+$max-columns : 12;
+
+//media queries
+$small : 460px;
+$medium : 640px;
+$large : 960px;
+$x-large : 1200px;
+$sizes : ("s" : $small, "md" : $medium, "l" : $large, "xl" : $x-large);

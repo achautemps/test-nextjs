@@ -1,0 +1,40 @@
+.o-flex{
+  display: flex;
+  &.-gutter{
+    padding: var(--gutter);
+    > * {
+      padding: var(--gutter);
+    }
+  }
+  &.-wrap{
+    flex-wrap: wrap;
+  }
+  &.-center{
+    justify-content: center;
+  }
+  &.-vcenter{
+    align-items: center
+  }
+  &.-spaceBetween{
+    justify-content: space-between;
+  }
+  @each $size, $var in $sizes {
+    @media all and (min-width : #{$var}){
+      &.-#{$size}-gutter{
+        padding: var(--gutter);
+        > * {
+          padding: var(--gutter);
+        }
+      }
+      &.-#{$size}-wrap{
+        flex-wrap: wrap;
+      }
+      &.-#{$size}-center{
+        justify-content: center;
+      }
+      &.-#{$size}-vcenter{
+        align-items: center
+      }
+    }
+  }
+}

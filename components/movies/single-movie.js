@@ -24,7 +24,7 @@ function Movie({ movie }){
       </div>
       <style jsx>{`
         .c-movie {
-          width: 30%;
+          width: 100%;
           &__img {
             width: 100%;
             position: relative;
