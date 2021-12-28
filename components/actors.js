@@ -11,8 +11,16 @@ export default function Actors({ actors }) {
           className='c-actors'
           options={{
             type: 'loop',
-            perPage: 4,
+            perPage: 5,
             pagination: false,
+            breakpoints: {
+              720: {
+                perPage: 3,
+              },
+              960: {
+                perPage: 4,
+              },
+            },
           }}
         >
           {actors
@@ -41,11 +49,13 @@ export default function Actors({ actors }) {
         @import '../styles/shared';
         .c-actor {
           padding: rem(8);
+          text-align: center;
           &__img {
             position: relative;
             width: 100%;
             border-radius: rem(8);
             overflow: hidden;
+            margin-bottom: rem(8);
             padding-top: 100%;
           }
         }

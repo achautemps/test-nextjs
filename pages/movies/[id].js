@@ -43,13 +43,17 @@ export default function Movie({ movie, actors }) {
                   <Genres genres={movie.genres} />
                   <h1>{movie.original_title}</h1>
                   <p>{movie.overview}</p>
-                  <p>{movie.vote_average} / 10</p>
-                  <p>{formatDate(movie.release_date)}</p>
+                  <p>
+                    <b>Note moyenne</b> : {movie.vote_average} / 10
+                  </p>
+                  <p>
+                    <b>Date de sortie</b> : {formatDate(movie.release_date)}
+                  </p>
                   <button
                     onClick={handleClickRatingButton}
                     className='button -tiny l-movie__rating'
                   >
-                    Donner une note au film
+                    Donner votre note au film
                   </button>
                 </div>
                 <Actors actors={actors.cast} />
