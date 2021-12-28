@@ -5,7 +5,7 @@ export default function Search({ handleChange }) {
         <input
           className='search__input'
           onChange={handleChange}
-          placeholder='Chercher un film'
+          placeholder='Filtrer les films'
         />
       </div>
       <style jsx>{`
