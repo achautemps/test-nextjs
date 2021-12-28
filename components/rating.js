@@ -5,7 +5,7 @@ import Message from './message';
 
 function Rating({ movie }, ref) {
   const marks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(0);
   const [result, setResult] = useState(null);
 
   async function handleSubmit() {

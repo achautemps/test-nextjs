@@ -12,14 +12,9 @@ import { formatDate } from '../../utils/date';
 
 export default function Movie({ movie, actors }) {
   const modal = useRef();
-  const rating = useRef();
   function handleClickRatingButton() {
     modal.current.toggleModal();
   }
-  function handleCloseModal() {
-    rating.current.reset();
-  }
-  console.log(movie);
   return (
     <>
       <Layout show_debug_grid={true}>
@@ -61,13 +56,8 @@ export default function Movie({ movie, actors }) {
               </div>
             </div>
           </div>
-          <Modal
-            ref={modal}
-            ariaHidden='true'
-            size='tiny'
-            onClose={handleCloseModal}
-          >
-            <Rating ref={rating} movie={movie} />
+          <Modal ref={modal} ariaHidden='true' size='tiny'>
+            <Rating movie={movie} />
           </Modal>
         </section>
       </Layout>

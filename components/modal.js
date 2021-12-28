@@ -1,12 +1,9 @@
 import { useState, forwardRef, useImperativeHandle } from 'react';
 import clsx from 'clsx';
 
-const Modal = ({ children, ariaHidden, size, onClose }, ref) => {
+const Modal = ({ children, ariaHidden, size }, ref) => {
   const [isActive, setActive] = useState(false);
   function toggleModal() {
-    if (isActive && onClose) {
-      onClose();
-    }
     setActive((state) => !state);
   }
   function onClickModal(e) {
@@ -29,7 +26,7 @@ const Modal = ({ children, ariaHidden, size, onClose }, ref) => {
           <div className='c-modal__close' onClick={onClickModal}>
             +
           </div>
-          {children}
+          {isActive && children}
         </div>
       </div>
       <style jsx>{`
