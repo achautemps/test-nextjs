@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Movie from './movie-item';
 import Search from '../search';
 
-export default function Movies({ movies, onClickLoadMore }) {
+export default function Movies({ movies, onClickLoadMore, isLoading }) {
   const [filter, setFilter] = useState('');
   function onFilter(e) {
     setFilter(e.target.value.toLowerCase());
@@ -23,8 +23,7 @@ export default function Movies({ movies, onClickLoadMore }) {
         {movies.page < movies.total_pages ? (
           <div className='c-movies__more'>
             <span className='button' onClick={onClickLoadMore}>
-              {' '}
-              Voir Plus
+              {isLoading ? '...Chargement' : ' Voir Plus'}
             </span>
           </div>
         ) : null}

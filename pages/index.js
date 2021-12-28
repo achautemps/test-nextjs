@@ -6,7 +6,9 @@ import Layout from '../components/layout';
 
 export default function Home({ initialMovies }) {
   const [movies, setMovies] = useState(initialMovies);
+  const [isLoading, setIsLoading] = useState(false);
   function onClickLoadMore() {
+    setIsLoading(true);
     Api.getAll(movies.page + 1)
       .then(({ results, page }) => {
         setMovies((state) => ({
@@ -15,7 +17,8 @@ export default function Home({ initialMovies }) {
           results: [...state.results, ...results],
         }));
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .then(() => setIsLoading(false));
   }
   return (
     <div className='container'>
@@ -24,7 +27,11 @@ export default function Home({ initialMovies }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Layout>
-        <Movies movies={movies} onClickLoadMore={onClickLoadMore} />
+        <Movies
+          movies={movies}
+          isLoading={isLoading}
+          onClickLoadMore={onClickLoadMore}
+        />
       </Layout>
     </div>
   );
