@@ -1,15 +1,14 @@
 # nextjs
 
-Avant de commencer la présentation de mon projet, je souhaite introduire en annonçant que je n'ai travaillé que sur React purement client associé à une API REST via express. je découvre donc next.js avec ce projet.
+Avant de commencer la présentation de mon projet, je souhaite préciser que je n'ai travaillé que sur React purement client associé à une API REST via express. Je découvre donc next.js avec ce projet.
 
 ## Installation
 
-1. Générer les variables d'environemnt: `npm run init`
+1. Générer les variables d'environement: `npm run init`
 2. Token pour l'API à mettre dans `.env.local`: b987916093854e9ccf1bbc69bd425600
 3. Token pour les cookies à mettre dans `.env.local` : 5kbWIuTHKDSRGqXOjdul0uQQyCIa5NBL (n'importe quelle chaine de 32 caractères fonctionne)
-4. Base Url à mettre dans `.env.local` selon votre environnement.
-5. `npm i` (necessite Node.js 16.x)
-6. `npm run dev`
+4. `npm i` (necessite Node.js 16.x)
+5. `npm run dev`
 
 ## Dépendances
 
@@ -30,21 +29,21 @@ J'ai choisi cette API car elle est vraiment très fournie en terme de fonctionna
 ### Fonctionnement de l'API
 
 Chaque appel à l'API se fait via une url du type `https://api.themoviedb.org/3/movie/76341?api_key=<<api_key>>`.
-Je devais donc envoyer la clé API dans les paramètres de chaques appels. J'utilise les variables d'environnement pour cacher mes clés API. Je me suis retrouvé coincé pour faire le systeme de pagination côté client, j'ai donc décidé de partir sur une "API proxy" via les [API routes](https://nextjs.org/docs/api-routes/introduction) que propose next.js.
+Je devais donc envoyer la clé API dans les paramètres de chaques appels. J'utilise les variables d'environnement pour cacher mes clés API. Je me suis retrouvé coincé pour faire le système de pagination côté client sans mettre ma clé en public, j'ai donc décidé de partir sur une "API proxy" via les [API routes](https://nextjs.org/docs/api-routes/introduction) que propose next.js.
 En faisant ainsi je peux appeler ma propre API qui ira se servir dans celle de The Movie Database sans montrer le moindre token.
 
 De plus, cette méthode me permet de choisir mes propres noms de routes et me retourner ce dont j'ai besoin. Je peux maintenant faire un seul appel depuis mes pages pour appeler 2 endpoints de l'API The Movie Database.
-La page detail d'un film est un bon example. Il me faut pour cette page des données de deux différents endpoint de l'API The Movie Database (un pour les détails du film et un pour avoir la liste des acteurs). En créant ma propre route api `/api/movies/:id` mon component ne fait qu'un appel et c'est l'api route qui se charger de faire les deux appels à l'API The Movie Database.
+La page détail d'un film est un bon example. Il me faut pour cette page des données de deux différents endpoint de l'API The Movie Database (un pour les détails du film et un pour avoir la liste des acteurs). En créant ma propre route api `/api/movies/:id` mon component ne fait qu'un appel et c'est l'api route qui se charger de faire les deux appels à l'API The Movie Database.
 
 ### Guest session id
 
-Afin de pouvoir noter un film, l'API Movie Database demande un guest session token afin de pouvoir identifier la personne qui fait la requete. Ensuite il ajoute ou met à jour la note selon si l'utilisateur a déjà noté ou non un film.
+Afin de pouvoir noter un film, l'API Movie Database demande un guest session token afin de pouvoir identifier la personne qui fait la requête. Ensuite il ajoute ou met à jour la note selon si l'utilisateur a déjà noté ou non un film.
 
-Pour cela, j'ai décidé de faire un mini systeme de session via un cookie de navigation. Quand l'utilisateur note un film, je vais regarder si le cookie existe et contient un guest session id, si c'est le cas, je l'utilise pour faire la requete à l'API Movie Database sinon je fait une requete au préalable pour recevoir un guest session id et l'ajoute dans un cookie qui sera retourné au navigateur une fois que la requete à l'API Movie Database pour noté le film est terminée.
+Pour cela, j'ai décidé de faire un mini système de session via un cookie de navigation. Quand l'utilisateur note un film, je vais regarder si le cookie existe et contient un guest session id, si c'est le cas, je l'utilise pour faire la requête à l'API Movie Database sinon je fait une requete au préalable pour recevoir un guest session id et l'ajoute dans un cookie qui sera retourné au navigateur une fois que la requête à l'API Movie Database pour noter le film est terminée.
 
 ### Diagrame de l'api
 
-Un bon exemple vaut mieux qu'un long discours, voici un diagramme du fonctionnement de l'api sur mon app.
+Un bon exemple vaut mieux qu'un long discours, donc voici un diagramme du fonctionnement de l'api sur mon app.
 ![diagrame](/docs/diagramme-api.png)
 
 ## Style JSX vs CSS Module
@@ -67,8 +66,8 @@ Bien entendu, je présente 2 solutions qui pour moi étaient les plus rapides à
 
 Ceci étant dit, pour ce test j'ai opté pour le couple **import global des CSS / Styles JSX** et voici les raisons :
 
-- J'utilise une méthode améliorée de BEM depuis des années. Malgré le fait que j'ai apprecié le CSS Module, je devais chambouler toutes mes syntaxes CSS pour l'utiliser. J'ai donc choisi la méthode JSX car je ne voulais pas d'une syntaxe Hybride entre ma méthode BEM dans les CSS Globaux et celle des Module CSS dans mes components.
-- J'utilise également la librairie [clsx](https://www.npmjs.com/package/clsx) pour les conditions de classes. Via CSS Module, je me retrouvais avec du code trop verbeux à mon gout dans un simple "className".
+- J'utilise une méthode améliorée de BEM depuis des années. Malgré le fait que j'ai apprécié le CSS Module, je devais chambouler toutes mes syntaxes CSS pour l'utiliser. J'ai donc choisi la méthode JSX car je ne voulais pas d'une syntaxe Hybride entre ma méthode BEM dans les CSS Globaux et celle des CSS Modules dans mes components.
+- J'utilise également la librairie [clsx](https://www.npmjs.com/package/clsx) pour les conditions de classes. Via CSS Modules, je me retrouvais avec du code trop verbeux à mon gout dans un simple "className".
 - Je souhaitais vraiment garder de la cohérence entre les attributs className de mes pages et ceux de mes components
 
 Ces raisons m'ont donc poussé à choisir les **Styles JSX** plutôt que les **CSS Modules**
@@ -82,7 +81,7 @@ Comme évoqué précédement, mes classes CSS sont faites avec une méthode BEM 
 Chaque block ou élément à un rôle dans mon projet :
 
 - Element (pas de préfixe) : représente un element très simple (ex : titre, bouton, label).
-- Component (préfixe : `c-`) : représente un groupe d'élements ou d'autres components (Ce que je vais avoir dans un component react).
+- Component (préfixe : `c-`) : représente un groupe d'éléments ou d'autres components (Ce que je vais avoir dans un component react).
 - Objects (préfixe : `o-`) : Toutes les classes non visibles, souvent pour la mise en page (ex : la grille pour mettre en page).
 - Utilitaires (préfixe : `u-`) : Toutes les classes utiles qui peuvent me servir au global du projet.
 - Page (préfixe : `p-`) : Toutes les classes pour la page au global (Ce que je vais avoir la page next).
@@ -125,7 +124,7 @@ Exemple :
 En effet, On ne sait pas vraiment si le modifier `-tiny` est sur `.c-product__button` ou sur `.button`.
 Dans l'exemple, il est après `.button`, donc on imagine qu'il est sur celui-ci. Mais avec un projet plus conséquent et de multiples modifiers. La logique n'est plus vraiment de mise.
 
-Pour éviter la moindre place à l'interpretation j'utilise le `||` pour bien séparer mes classes. **Il n'est jamais utilisé dans mon CSS, il me sert juste de séparateur visuel**.
+Pour éviter la moindre place à l'interprétation j'utilise le `||` pour bien séparer mes classes. **Il n'est jamais utilisé dans mon CSS, il me sert juste de séparateur visuel**.
 Exemple :
 
 ```HTML
@@ -134,10 +133,10 @@ Exemple :
 </div>
 ```
 
-Je sais maintenant que `-tiny` est sur `.c-product__button` et non sur `.button` et que le modifier est dans le component product et non dan l'élément button si j'ai à le changer.
+Je sais maintenant que `-tiny` est sur `.c-product__button` et non sur `.button` et que le modifier est dans le component product et non dans l'élément button si j'ai à le changer.
 
 ## That's all folks !
 
-Merci de m'avoir donné une chance et pour le temps que vous consacrez à me lire.
+Merci de m'avoir donné une chance et pour le temps que vous avez consacré à me lire.
 
 Alexandre
