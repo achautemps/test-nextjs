@@ -87,7 +87,7 @@ export default function Navigation({ isActive, handleClick }) {
           position: fixed;
           top: 0;
           right: 0;
-          z-index: 10;
+          z-index: 1000;
           min-height: 100vh;
           width: 200px;
           padding: rem(32);
