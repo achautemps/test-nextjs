@@ -17,7 +17,7 @@ export default function Movie({ movie, actors }) {
   }
   return (
     <>
-      <Layout show_debug_grid={true}>
+      <Layout>
         <Head>
           <title>Découvrir : {movie.original_title}</title>
         </Head>
