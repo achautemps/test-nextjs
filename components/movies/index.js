@@ -16,7 +16,7 @@ export default function Movies({
     <>
       <section className='c-movies'>
         <Search handleChange={onFilter} />
-        <ul className='o-flex -center -wrap -gutter'>
+        <ul className='o-flex -center -wrap -gutter || c-movies__list'>
           {movies
             .filter((movie) => movie.title.toLowerCase().includes(filter))
             .map((movie) => (

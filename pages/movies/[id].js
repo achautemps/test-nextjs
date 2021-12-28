@@ -41,7 +41,7 @@ export default function Movie({ movie, actors }) {
               <div className='p-movie__content'>
                 <div className='p-movie__head'>
                   <Genres genres={movie.genres} />
-                  <h1>{movie.original_title}</h1>
+                  <h1 className='title -big'>{movie.original_title}</h1>
                   <p>{movie.overview}</p>
                   <p>
                     <b>Note moyenne</b> : {movie.vote_average} / 10
@@ -51,9 +51,9 @@ export default function Movie({ movie, actors }) {
                   </p>
                   <button
                     onClick={handleClickRatingButton}
-                    className='button -tiny l-movie__rating'
+                    className='button -tiny || p-movie__rating'
                   >
-                    Donner votre note au film
+                    Donner une note au film
                   </button>
                 </div>
                 <Actors actors={actors.cast} />
