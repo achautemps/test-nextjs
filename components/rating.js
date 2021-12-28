@@ -18,7 +18,7 @@ export default function Rating({ movie }, ref) {
   return (
     <>
       <div className='c-rating'>
-        <h2>Donner une note au film</h2>
+        <h2 className='title'>Donner une note au film</h2>
         <ul className='c-rating__list || o-flex -center -spaceBetween'>
           {marks.map((mark) => (
             <li
