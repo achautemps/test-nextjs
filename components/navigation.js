@@ -44,6 +44,7 @@ export default function Navigation({ isActive, handleClick }) {
                 className='o-flex -vcenter'
                 href='https://github.com/achautemps/'
                 target='_blank'
+                rel='noreferrer'
                 title="Découvrir le profil Github d'Alexandre Chautemps"
               >
                 <svg
@@ -63,6 +64,7 @@ export default function Navigation({ isActive, handleClick }) {
                 className='o-flex -vcenter'
                 href='https://www.linkedin.com/in/alexandre-chautemps-6b077583/'
                 target='_blank'
+                rel='noreferrer'
                 title="Découvrir le profil Linkedin d'Alexandre Chautemps"
               >
                 <svg

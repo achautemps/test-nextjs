@@ -3,7 +3,11 @@ export default function Footer() {
     <>
       <footer className='c-footer || o-flex -vcenter -center'>
         <p>
-          <a href='https://github.com/achautemps/test-nextjs' target='_blank'>
+          <a
+            href='https://github.com/achautemps/test-nextjs'
+            target='_blank'
+            rel='noreferrer'
+          >
             Alexandre Chautemps
           </a>
         </p>
