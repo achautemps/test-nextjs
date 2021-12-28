@@ -45,6 +45,8 @@ export default function Rating({ movie }, ref) {
       <style jsx>{`
         @import '../styles/shared';
         .c-rating {
+          text-align: center;
+          padding: 0 rem(16);
           &__list {
             margin-bottom: rem(16);
           }
