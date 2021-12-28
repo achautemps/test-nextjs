@@ -4,7 +4,7 @@ Avant de commencer la présentation de mon projet, je souhaite préciser que je 
 
 ## Installation
 
-1. Générer les variables d'environement: `npm run init`
+1. Générer les variables d'environement avec: `npm run init`
 2. Token pour l'API à mettre dans `.env.local`: b987916093854e9ccf1bbc69bd425600
 3. Token pour les cookies à mettre dans `.env.local` : 5kbWIuTHKDSRGqXOjdul0uQQyCIa5NBL (n'importe quelle chaine de 32 caractères fonctionne)
 4. `npm i` (necessite Node.js 16.x)
