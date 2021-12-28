@@ -8,6 +8,7 @@ import Actors from '../../components/actors';
 import Modal from '../../components/modal';
 import Rating from '../../components/rating';
 import Layout from '../../components/layout';
+import { formatDate } from '../../utils/date';
 
 export default function Movie({ movie, actors }) {
   const modal = useRef();
@@ -18,6 +19,7 @@ export default function Movie({ movie, actors }) {
   function handleCloseModal() {
     rating.current.reset();
   }
+  console.log(movie);
   return (
     <>
       <Layout show_debug_grid={true}>
@@ -47,6 +49,7 @@ export default function Movie({ movie, actors }) {
                   <h1>{movie.original_title}</h1>
                   <p>{movie.overview}</p>
                   <p>{movie.vote_average} / 10</p>
+                  <p>{formatDate(movie.release_date)}</p>
                   <button
                     onClick={handleClickRatingButton}
                     className='button -tiny l-movie__rating'
