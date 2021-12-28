@@ -4,10 +4,11 @@ import Api from '../lib/proxy-api';
 import Movies from '../components/movies';
 import Layout from '../components/layout';
 
-export default function Home({ initialMovies }) {
+function useMovies(initialMovies) {
   const [movies, setMovies] = useState(initialMovies);
   const [isLoading, setIsLoading] = useState(false);
-  function onClickLoadMore() {
+
+  function loadMore() {
     setIsLoading(true);
     Api.getAll(movies.page + 1)
       .then(({ results, page }) => {
@@ -20,20 +21,30 @@ export default function Home({ initialMovies }) {
       .catch((error) => console.error(error))
       .then(() => setIsLoading(false));
   }
+  return {
+    movies: movies.results,
+    canLoadMore: movies.page < movies.total_pages,
+    isLoading,
+    loadMore,
+  };
+}
+
+export default function Home({ initialMovies }) {
+  const { movies, canLoadMore, isLoading, loadMore } = useMovies(initialMovies);
   return (
-    <div className='container'>
+    <Layout>
       <Head>
         <title>Test Next.js Alex Chautemps</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Layout>
-        <Movies
-          movies={movies}
-          isLoading={isLoading}
-          onClickLoadMore={onClickLoadMore}
-        />
-      </Layout>
-    </div>
+
+      <Movies
+        movies={movies}
+        isLoading={isLoading}
+        canLoadMore={canLoadMore}
+        onClickLoadMore={loadMore}
+      />
+    </Layout>
   );
 }
 
