@@ -10,7 +10,7 @@ body {
     font-family: $text-font-family;
     color: var(--content-color);
     @include large-up{
-        font-size: rem(16);
+        font-size: rem(14);
     }
 }
 
@@ -20,6 +20,9 @@ body {
 
 img {
     max-width: 100%;
+}
+p{
+    margin: 0 0 rem(8);
 }
 
 ul {

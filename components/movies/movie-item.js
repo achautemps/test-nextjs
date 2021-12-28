@@ -17,7 +17,7 @@ function Movie({ movie }) {
                 blurDataURL='data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='
               />
             </div>
-            <h2 className='c-movie__title'>{movie.title}</h2>
+            <h2 className='c-movie__title || title'>{movie.title}</h2>
             <p>{movie.id}</p>
           </a>
         </Link>
