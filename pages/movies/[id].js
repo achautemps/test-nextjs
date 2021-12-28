@@ -13,7 +13,7 @@ import { formatDate } from '../../utils/date';
 export default function Movie({ movie, actors }) {
   const modal = useRef();
   function handleClickRatingButton() {
-    modal.current.toggleModal();
+    modal.current.toggle();
   }
   return (
     <>

@@ -1,27 +1,20 @@
-import { useState, forwardRef, useImperativeHandle } from 'react';
+import { useState } from 'react';
 import clsx from 'clsx';
 import Api from '../lib/proxy-api';
 import Message from './message';
 
-function Rating({ movie }, ref) {
+export default function Rating({ movie }, ref) {
   const marks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [rating, setRating] = useState(0);
   const [result, setResult] = useState(null);
-
   async function handleSubmit() {
     const res = await Api.movieRating(movie.id, rating);
     setResult({ ...res, rating });
   }
-  function reset() {
-    setResult(null);
-  }
   function handleClickMark(mark) {
     setRating(mark);
-    reset();
   }
-  useImperativeHandle(ref, () => {
-    return { reset };
-  });
+
   return (
     <>
       <div className='c-rating'>
@@ -45,7 +38,7 @@ function Rating({ movie }, ref) {
           ))}
         </ul>
         <button className='button' onClick={handleSubmit}>
-          Voter
+          Noter
         </button>
         <Message result={result} />
       </div>
@@ -79,5 +72,3 @@ function Rating({ movie }, ref) {
     </>
   );
 }
-
-export default forwardRef(Rating);
