@@ -13,11 +13,17 @@ export default function Genres({ genres }) {
           @import '../styles/shared';
           .c-genres {
             &__item {
-              padding: 0.25rem;
+              padding: rem(4);
               border-radius: rem(8);
               font-size: rem(9);
-              margin-right: 0.25rem;
+              margin-right: rem(4);
               background: $lighter-grey;
+              @include large-up {
+                font-size: rem(14);
+                padding: rem(8);
+                margin-right: rem(8);
+                border-radius: rem(10);
+              }
             }
           }
         `}</style>

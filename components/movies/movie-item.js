@@ -17,8 +17,8 @@ function Movie({ movie }) {
                 blurDataURL='data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='
               />
             </div>
-            <h2 className='c-movie__title'>{movie.title}</h2>
-            <p>{movie.id}</p>
+            <h2 className='c-movie__title || title'>{movie.title}</h2>
+            <p>{movie.vote_average} / 10</p>
           </a>
         </Link>
       </div>
@@ -38,6 +38,7 @@ function Movie({ movie }) {
             width: 100%;
             white-space: nowrap;
             overflow: hidden;
+            margin-bottom: 0;
           }
         }
       `}</style>

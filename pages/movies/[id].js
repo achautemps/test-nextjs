@@ -7,64 +7,64 @@ import Genres from '../../components/genres';
 import Actors from '../../components/actors';
 import Modal from '../../components/modal';
 import Rating from '../../components/rating';
+import Layout from '../../components/layout';
+import { formatDate } from '../../utils/date';
 
 export default function Movie({ movie, actors }) {
   const modal = useRef();
-  const rating = useRef();
   function handleClickRatingButton() {
-    modal.current.toggleModal();
-  }
-  function handleCloseModal() {
-    rating.current.reset();
+    modal.current.toggle();
   }
   return (
     <>
-      <Head>
-        <title>Découvrir : {movie.original_title}</title>
-      </Head>
-      <section className='p-movie'>
-        <div className='o-flex -s-gutter -wrap'>
-          <div className='o-col-12 -s-5 -md-4'>
-            <div className='p-movie__bg'>
-              <Link href='/'>
-                <a className='p-movie__back'>&#8249;</a>
-              </Link>
-              <Image
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={`Affiche du film : ${movie.title}`}
-                layout='fill'
-                objectFit='cover'
-                objectPosition='center top'
-              />
-            </div>
-          </div>
-          <div className='o-col-12 -s-7 -md-8'>
-            <div className='p-movie__content'>
-              <div className='p-movie__head'>
-                <Genres genres={movie.genres} />
-                <h1>{movie.original_title}</h1>
-                <p>{movie.overview}</p>
-                <p>{movie.vote_average} / 10</p>
-                <button
-                  onClick={handleClickRatingButton}
-                  className='button -tiny l-movie__rating'
-                >
-                  Donner une note au film
-                </button>
+      <Layout>
+        <Head>
+          <title>Découvrir : {movie.original_title}</title>
+        </Head>
+        <section className='p-movie'>
+          <div className='o-flex -s-gutter -wrap'>
+            <div className='o-col-12 -s-5 -md-4'>
+              <div className='p-movie__bg'>
+                <Link href='/'>
+                  <a className='p-movie__back'>&#8249;</a>
+                </Link>
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={`Affiche du film : ${movie.title}`}
+                  layout='fill'
+                  objectFit='cover'
+                  objectPosition='center top'
+                />
               </div>
-              <Actors actors={actors.cast} />
+            </div>
+            <div className='o-col-12 -s-7 -md-8'>
+              <div className='p-movie__content'>
+                <div className='p-movie__head'>
+                  <Genres genres={movie.genres} />
+                  <h1 className='title -big'>{movie.original_title}</h1>
+                  <p>{movie.overview}</p>
+                  <p>
+                    <b>Note moyenne</b> : {movie.vote_average} / 10
+                  </p>
+                  <p>
+                    <b>Date de sortie</b> : {formatDate(movie.release_date)}
+                  </p>
+                  <button
+                    onClick={handleClickRatingButton}
+                    className='button -tiny || p-movie__rating'
+                  >
+                    Donner une note au film
+                  </button>
+                </div>
+                <Actors actors={actors.cast} />
+              </div>
             </div>
           </div>
-        </div>
-        <Modal
-          ref={modal}
-          ariaHidden='true'
-          size='tiny'
-          onClose={handleCloseModal}
-        >
-          <Rating ref={rating} movie={movie} />
-        </Modal>
-      </section>
+          <Modal ref={modal} ariaHidden='true' size='tiny'>
+            <Rating movie={movie} />
+          </Modal>
+        </section>
+      </Layout>
       <style jsx>{`
         @import '../../styles/shared';
         .p-movie {

@@ -1,6 +1,21 @@
+.mainTitle{
+  font-size: rem(14);
+  color: $grey;
+  font-family: $title-font-family;
+  strong{
+    color: $dark-grey;
+    font-size: 1.8em;
+    letter-spacing: -1px;
+  }
+}
 .title{
   font-family: $title-font-family;
   font-size: rem(16);
+  margin: rem(8) 0;
+  &.-big{
+    font-size: rem(22);
+    margin: rem(16) 0;
+  }
   &.-tiny{
     font-size: rem(12);
     font-family: $text-font-family;

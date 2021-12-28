@@ -1,5 +1,6 @@
 .message{
   font-weight: bold;
+  margin-top: rem(8);
   &.-error{
     color: $error;
   }

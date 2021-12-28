@@ -2,10 +2,14 @@ import Head from 'next/head';
 import { useState } from 'react';
 import Api from '../lib/proxy-api';
 import Movies from '../components/movies';
+import Layout from '../components/layout';
 
-export default function Home({ initialMovies }) {
+function useMovies(initialMovies) {
   const [movies, setMovies] = useState(initialMovies);
-  function onClickLoadMore() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  function loadMore() {
+    setIsLoading(true);
     Api.getAll(movies.page + 1)
       .then(({ results, page }) => {
         setMovies((state) => ({
@@ -14,18 +18,33 @@ export default function Home({ initialMovies }) {
           results: [...state.results, ...results],
         }));
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .then(() => setIsLoading(false));
   }
+  return {
+    movies: movies.results,
+    canLoadMore: movies.page < movies.total_pages,
+    isLoading,
+    loadMore,
+  };
+}
+
+export default function Home({ initialMovies }) {
+  const { movies, canLoadMore, isLoading, loadMore } = useMovies(initialMovies);
   return (
-    <div className='container'>
+    <Layout>
       <Head>
         <title>Test Next.js Alex Chautemps</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>
-        <Movies movies={movies} onClickLoadMore={onClickLoadMore} />
-      </main>
-    </div>
+
+      <Movies
+        movies={movies}
+        isLoading={isLoading}
+        canLoadMore={canLoadMore}
+        onClickLoadMore={loadMore}
+      />
+    </Layout>
   );
 }
 
