@@ -9,6 +9,7 @@ Avant de commencer la présentation de mon projet, je souhaite préciser que je 
 3. Token pour les cookies à mettre dans `.env.local` : 5kbWIuTHKDSRGqXOjdul0uQQyCIa5NBL (n'importe quelle chaine de 32 caractères fonctionne)
 4. `npm i` (necessite Node.js 16.x)
 5. `npm run dev`
+6. (facultatif) Pour tester avec cypress l'application, lancez `npm run cypress` en parallèle de `npm run dev`
 
 ## Dépendances
 
@@ -19,6 +20,7 @@ Avant de commencer la présentation de mon projet, je souhaite préciser que je 
 - [splidejs](https://splidejs.com/integration/react-splide/) : Librairie légère pour faire les carousels.
 - [iron-session](https://github.com/vvo/iron-session) : Librairie pour gérer les sessions via cookies sécurisés
 - eslint : Pour linter mon code.
+- [cypress](https://www.cypress.io/) : Librairie pour faire les tests fonctionnels de mon application.
 
 ## API utilisée
 
