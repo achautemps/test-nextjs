@@ -16,7 +16,7 @@ export default function Footer() {
         @import '../styles/shared';
         .c-footer {
           position: absolute;
-          background: $lighter-grey;
+          background: var(--sub-bg-color);
           padding: rem(32);
           margin-top: rem(16);
           text-align: center;
@@ -24,6 +24,7 @@ export default function Footer() {
           bottom: 0;
           width: 100%;
           p {
+            color: var(--content-color);
             margin: 0;
           }
         }

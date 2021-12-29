@@ -9,6 +9,7 @@ body {
     line-height: 1.2;
     font-family: $text-font-family;
     color: var(--content-color);
+    background: var(--bg-color);
     min-height: 100vh;
     padding-bottom: rem(132);
     position: relative;
@@ -29,10 +30,10 @@ p{
     margin: 0 0 rem(8);
     a{
         text-decoration: underline;
-        color: $grey;
+        color: var(--sub-content-color);
         transition : color 0.25s ease-in-out;
         &:hover{
-            color: $dark-grey;
+            color: var(--content-color);
             transition : color 0.25s ease-in-out;
         }
     }

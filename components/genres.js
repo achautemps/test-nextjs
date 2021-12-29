@@ -17,7 +17,8 @@ export default function Genres({ genres }) {
               border-radius: rem(8);
               font-size: rem(9);
               margin-right: rem(4);
-              background: $lighter-grey;
+              background: var(--sub-bg-color);
+              color: var(--content-color);
               @include large-up {
                 font-size: rem(14);
                 padding: rem(8);

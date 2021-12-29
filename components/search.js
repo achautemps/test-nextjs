@@ -15,7 +15,9 @@ export default function Search({ handleChange }) {
           &__input {
             border-radius: rem(8);
             padding: 0.5rem;
-            border: 1px solid $light-grey;
+            border: 1px solid var(--sub-content-color);
+            color: var(--sub-content-color);
+            background: var(--bg-color);
             width: 100%;
           }
         }

@@ -82,7 +82,7 @@ export default function Movie({ movie, actors }) {
           }
           &__back {
             position: absolute;
-            color: $bg-color;
+            color: $light;
             top: rem(8);
             left: rem(12);
             z-index: 2;

@@ -1,7 +1,9 @@
 :root {
   --primary-color: #{$primary-color};
-  --bg-color: #{$bg-color};
-  --content-color: #{$content-color};
+  --bg-color: #{$light};
+  --sub-bg-color: #{$lighter-grey};
+  --content-color: #{$dark-grey};
+  --sub-content-color: #{$grey};
   --gutter : #{rem(4)};
 }
 
@@ -9,5 +11,13 @@
   :root {
     --gutter : #{rem(8)};
   }
-  
 }
+
+.dark{
+  --bg-color: #{$dark-grey};
+  --sub-bg-color: #{$grey};
+  --content-color: #{$light};
+  --sub-content-color: #{$lighter-grey};
+}
+
+

@@ -25,9 +25,12 @@ export default function Burger({ handleClick }) {
             width: rem(20);
             height: rem(20);
             margin-left: rem(6);
+            *{
+              fill: var(--content-color);
+            }
           }
           &:hover {
-            background: $lighter-grey;
+            background: var(--sub-bg-color);
             transition: background 0.25s $ease;
           }
         }

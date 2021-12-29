@@ -56,6 +56,7 @@ const Modal = ({ children, ariaHidden, size }, ref) => {
         </div>
       </div>
       <style jsx>{`
+        @import '../styles/shared';
         .overlay {
           position: fixed;
           top: 0;
@@ -78,8 +79,8 @@ const Modal = ({ children, ariaHidden, size }, ref) => {
         }
         .c-modal {
           padding: 1rem;
-          background: white;
-          border-radius: 10px;
+          background: var(--bg-color);
+          border-radius: rem(10);
           width: 90%;
           max-width: 500px;
           position: relative;
@@ -95,14 +96,15 @@ const Modal = ({ children, ariaHidden, size }, ref) => {
             max-width: 300px;
           }
           &__close {
+            $size : rem(16);
             position: absolute;
             top: 0.5rem;
             right: 0.5rem;
             transform: rotate(-45deg);
-            width: 1rem;
-            height: 1rem;
-            font-size: 1.5rem;
-            line-height: 1rem;
+            width: $size;
+            height: $size;
+            font-size: rem(24);
+            line-height: $size;
             text-align: center;
             cursor: pointer;
           }
